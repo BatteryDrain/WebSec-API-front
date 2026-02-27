@@ -1,3 +1,7 @@
+const cors = require('cors');
+app.use(cors());
+
+
 async function uploadImage() {
     const fileInput = document.querySelector('#image');
     const formData = new FormData();

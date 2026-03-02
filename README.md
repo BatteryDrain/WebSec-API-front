@@ -31,7 +31,10 @@ Vite was configured to handle cors
 
 ## Navigating the Codebase
 
-
+app.jsx - This has the router path that serves the frontend routing
+style.css - This has the global styles for the app
+pages/ - This has the app pages home and feed that exposes api data and serve static page rendering
+api/ - This is where the axios instance is implemented for secure API fetch
 
 ## Running the Server
 

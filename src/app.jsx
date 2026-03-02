@@ -1,14 +1,19 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import React from 'react'
+import {Routes, Route} from 'react-router-dom'
+import Home from "@/pages/home";
+import Feed from "@/pages/feed";
+import './App.css'
 
+function App() {
 
-export default function App() {
   return (
-    <Routes>
-      {/* Home Route */}
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-    </Routes>
-  );
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/feed" element={<Feed />} />
+      </Routes>
+    </>
+  )
 }
+
+export default App

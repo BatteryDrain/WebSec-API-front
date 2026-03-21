@@ -43,17 +43,17 @@ export default function Login() {
         return;
       }
 
-      if (res.token) {
-        localStorage.setItem("token", res.token);
-        console.log("Token saved:", res.token);
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("role", res.user.role);
+      localStorage.setItem("userId", res.user.id);
+      setMessage(res.message || "Login successful");
 
-        setMessage(res.msg || "Login successful");
+      if (res.user.role === "admin") {
 
-       navigate("/dashboard");
+        navigate("/admin");
       } else {
-        setMessage("Invalid login response. Please try again.");
+        navigate("/dashboard");
       }
-
     } catch (err) {
       setMessage(err.data?.msg || "Login failed");
     } finally {

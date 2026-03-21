@@ -11,9 +11,11 @@ export default function Dashboard() {
 
       setIsAuthorized(!!token && role === "user");
     };
-
+  
     checkAuthorization();
+
   }, []);
+
   const handleLogout = () => {
     Logout();
 

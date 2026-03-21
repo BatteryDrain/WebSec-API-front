@@ -33,7 +33,7 @@ export default function Register() {
       setLoading(true);
       setMessage("");
 
-      const data  = await apiFetch({method: "POST", url: "/auth/register", data: form});
+      const data  = await apiFetch({method: "POST", url: "/register", data: form});
 
       if (data)
       setMessage(data.msg || "Registered successfully");

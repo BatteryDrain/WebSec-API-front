@@ -13,6 +13,10 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  const handleGoogleeLogin = () => {
+    window.location.href = "https://localhost:3001/api/v1/auth/google";
+  }
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -34,7 +38,7 @@ export default function Login() {
 
       const res = await apiFetch({
         method: "POST",
-        url: "/auth/login",
+        url: "/login",
         data: form,
       });
 
@@ -84,6 +88,9 @@ export default function Login() {
 
         <button disabled={loading}>
           {loading ? "Logging in..." : "Login"}
+        </button>
+        <button type="button" onClick={handleGoogleeLogin} style={{ marginLeft: "1rem" }}>
+          Login with Google
         </button>
       </form>
 

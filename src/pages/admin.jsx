@@ -18,7 +18,7 @@ export default function Admin() {
 
     const fetchAdminData = async () => {
       try {
-        const res = await apiFetch({ url: "/auth/admin" });
+        const res = await apiFetch({ url: "/admin" });
         setData(res);
       } catch (err) {
         console.error(err);

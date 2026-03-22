@@ -1,16 +1,54 @@
-# React + Vite
+# Secure Photo Sharing App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A secure, photo-sharing app built with React and Vite
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project demonstrates a production-style architecture for:
 
-## React Compiler
+- Client–server separation
+- HTTPS development environment
+- Structured routing
+- Clean Axios API layer
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation & Setup
 
-## Expanding the ESLint configuration
+1. clone repo
+2. run npm install in your terminal to install dependecies
+3. setup environment configuration file .env
+4. start server with "npm run dev"
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Configuration Strategy
+
+Frontend uses centralized Axios instance. This done to provide;
+
+- Single source of API truth
+- Interceptor support
+- Centralized error handling
+- Clean component code
+
+Vite was configured to handle cors
+
+## Navigating the Codebase
+
+app.jsx - This has the router path that serves the frontend routing
+style.css - This has the global styles for the app
+pages/ - This has the app pages home and feed that exposes api data and serve static page rendering
+api/ - This is where the axios instance is implemented for secure API fetch
+
+## Running the Server
+
+### Development
+
+- npm run dev
+
+### Production
+
+- npm run build
+
+## Ben's Reflection
+
+ At the beginning of this project, I was under the impression that we could finish this with routes in the backend. I was heavily mistaken as we needed to see routes making connections and cashing the CSS. As the backend has no CSS. To do this, we need a front-end. We have now made a front-end and a back-end with CSS caching.
+
+## Ben's reflection 2
+ One of the things that was difficult with this phase was the time allowed I recieved section A (auth) a day before this assiognment was due. I had to ask for an extention as I had to finish section B and C, giving us enoughf time to compleate the sections.

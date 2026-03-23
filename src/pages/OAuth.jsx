@@ -21,9 +21,12 @@ export default function OAuthSuccess() {
 
     if (payload.role === "admin") {
       navigate("/admin");
-    } else {
+    } if (payload.role === "user") {
       navigate("/dashboard");
+    } else {
+      navigate("/login");
     }
+
   }, [navigate]);
 
   return <p>Signing you in with Google...</p>;

@@ -15,6 +15,7 @@ export default function Login() {
 
   const handleGoogleeLogin = () => {
     window.location.href = "https://localhost:3001/api/v1/auth/google";
+    
   }
 
   const handleChange = (e) => {
@@ -50,14 +51,16 @@ export default function Login() {
       localStorage.setItem("token", res.token);
       localStorage.setItem("role", res.user.role);
       localStorage.setItem("userId", res.user.id);
+      localStorage.setItem("username", res.user.username);
+      localStorage.setItem("email", res.user.email);
       setMessage(res.message || "Login successful");
 
-      if (res.user.role === "admin") {
-
-        navigate("/admin");
-      } else {
-        navigate("/dashboard");
-      }
+const userRole = res.user.role?.toLowerCase();
+if (userRole === "admin") {
+  navigate("/admin");
+} else {
+  navigate("/dashboard");
+}
     } catch (err) {
       setMessage(err.data?.msg || "Login failed");
     } finally {

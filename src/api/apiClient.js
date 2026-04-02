@@ -8,18 +8,33 @@ export const apiFetch = async ({
     headers = {},
   }) => {
     try {
+   
+      const token = localStorage.getItem("token");
+
+      const authHeaders = {
+        ...headers,
+        Authorization: token ? `Bearer ${token}` : "",
+      };
+
       const response = await api({
         url,
         method,
         data,
         params,
-        headers,
+        headers: authHeaders, 
       });
   
       return response.data;
   
     } catch (error) {
-      console.error("API fetch error:", error);
-      throw error;
+
+      const status = error.response?.status;
+      const message = error.response?.data?.message || error.message;
+      
+      console.error(`API Error [${status}]:`, message);
+    
+      const enhancedError = new Error(message);
+      enhancedError.status = status;
+      throw enhancedError;
     }
   };

@@ -19,7 +19,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!isAuthorized) {
-      // Auto-redirect to login if check fails
       const timeout = setTimeout(() => navigate("/login"), 2000);
       return () => clearTimeout(timeout);
     }
@@ -30,7 +29,6 @@ export default function Dashboard() {
     navigate("/login");
   };
 
-  // 3. Proper Loading State
   if (isAuthorized === null) {
     return (
       <div style={{ padding: "2rem", textAlign: "center" }}>
@@ -39,13 +37,12 @@ export default function Dashboard() {
     );
   }
 
-  // 4. Denied State
   if (!isAuthorized) {
     return (
       <div style={{ padding: "2rem", textAlign: "center", color: "#d9534f" }}>
         <h2>🔒 Access Denied</h2>
         <p>Redirecting to login...</p>
-        <Link to="/login" style={{ fontWeight: "bold" }}>Manual Login</Link>
+        <Link to="/login" style={{ fontWeight: "bold" }}>Login</Link>
       </div>
     );
   }
@@ -70,7 +67,7 @@ export default function Dashboard() {
       </section>
 
       <div style={{ marginTop: "2rem", color: "black", padding: "1rem", background: "#eee", borderRadius: "4px", overflowX: "auto" }}>
-        <p style={{ fontSize: "0.8rem", fontWeight: "bold" }}>Debug - Active Token:</p>
+        <p style={{ fontSize: "0.8rem", fontWeight: "bold" }}>Active Token:</p>
         <code style={{ fontSize: "0.7rem", wordBreak: "break-all" }}>{userData.token}</code>
       </div>
     </div>

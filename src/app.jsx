@@ -7,6 +7,7 @@ import Register from "@/pages/register";
 import Dashboard from './pages/dashboard';
 import Admin from './pages/admin';
 import OAuthSuccess from './pages/OAuth';
+import Profile from './pages/profile';
 import './App.css' 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/oauth-success" element={<OAuthSuccess />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   )

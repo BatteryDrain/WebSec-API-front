@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { apiFetch } from "../api/apiClient";
+import { Link } from "react-router-dom";
 
 
 export default function Home() {
@@ -92,7 +93,7 @@ export default function Home() {
         </div>
       </form>
       <div id="sign" class="row">
-        <Link to="/register">signup</Link>
+        <Link to="/register">register</Link>
         <Link to="/login">login</Link>
       </div>
 

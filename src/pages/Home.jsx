@@ -1,10 +1,6 @@
 import { useState } from "react";
-<<<<<<< Updated upstream
-import api from "@/api/api";
-=======
 import { apiFetch } from "../api/apiClient";
 import { Link } from "react-router-dom";
->>>>>>> Stashed changes
 
 export default function Home() {
   const [photo, setPhoto] = useState(null);
@@ -48,7 +44,7 @@ export default function Home() {
       setLoading(true);
       setMessage("");
 
-      const { data } = await api.post("/photos", formData);
+      const { data } = await api.fetch("/photos", formData);
 
       if (!data || !data.file) {
         setMessage("Upload failed. Please try again.");
@@ -96,7 +92,7 @@ export default function Home() {
         </div>
       </form>
       <div id="sign" class="row">
-        <Link to="/signup">signup</Link>
+        <Link to="/register">signup</Link>
         <Link to="/login">login</Link>
       </div>
 

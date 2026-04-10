@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+#sign * {
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  border: lightgray 2px solid;
+  border-radius: 15px;
+  margin: 0 2px;
+}

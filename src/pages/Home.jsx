@@ -1,5 +1,10 @@
 import { useState } from "react";
+<<<<<<< Updated upstream
 import api from "@/api/api";
+=======
+import { apiFetch } from "../api/apiClient";
+import { Link } from "react-router-dom";
+>>>>>>> Stashed changes
 
 export default function Home() {
   const [photo, setPhoto] = useState(null);
@@ -90,6 +95,10 @@ export default function Home() {
         </button>
         </div>
       </form>
+      <div id="sign" class="row">
+        <Link to="/signup">signup</Link>
+        <Link to="/login">login</Link>
+      </div>
 
       {message && <p style={{ marginTop: "1rem" }}>{message}</p>}
 

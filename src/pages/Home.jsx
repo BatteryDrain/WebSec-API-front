@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { apiFetch } from "../api/apiClient";
-import { Link } from "react-router-dom";
+
 
 export default function Home() {
   const [photo, setPhoto] = useState(null);
@@ -44,7 +44,7 @@ export default function Home() {
       setLoading(true);
       setMessage("");
 
-      const { data } = await api.fetch("/photos", formData);
+      const data  = await apiFetch({ method: "POST", url: "/photos", data: formData });
 
       if (!data || !data.file) {
         setMessage("Upload failed. Please try again.");

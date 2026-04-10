@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
-import api from "@/api/api";
+import { apiFetch } from "../api/apiClient";
 
 export default function Feed() {
-  const [data, setData] = useState("");
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchFeed = async () => {
       try {
-        const res = await api.get("/photos/feed");
-        setData(res.data);
+        const res = await apiFetch({ url: "/photos/feed" });
+
+        setData(res);
+
       } catch (err) {
         console.error(err);
-        setError(err.response?.data || "Failed to fetch feed");
+
+        setError(err.data?.msg || err.message || "Failed to fetch feed");
+
       } finally {
         setLoading(false);
       }
@@ -33,7 +37,7 @@ export default function Feed() {
       {data && (
         <div style={{ marginTop: "1rem" }}>
           <h4>Feed Response:</h4>
-          <p>{data}</p>
+          <pre>{JSON.stringify(data, null, 2)}</pre>
         </div>
       )}
     </div>

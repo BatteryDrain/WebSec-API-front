@@ -91,7 +91,7 @@ export default function ProfileForm() {
     display: "block",
     fontSize: "12px",
     fontWeight: 500,
-    color: "#6b7280",
+    color: "#ffff",
     marginBottom: "6px",
     letterSpacing: "0.03em",
   };
@@ -105,7 +105,7 @@ export default function ProfileForm() {
     borderRadius: "8px",
     outline: "none",
     background: "#fff",
-    color: "#111827",
+    color: "#ffff",
   };
 
   const errorStyle = {
@@ -118,10 +118,10 @@ export default function ProfileForm() {
     <div style={{ maxWidth: "560px", margin: "1.5rem auto", padding: "0 1rem" }}>
 
       <div style={{ marginBottom: "1.5rem" }}>
-        <p style={{ fontSize: "13px", color: "#6b7280", margin: 0, letterSpacing: "0.04em", textTransform: "uppercase", fontWeight: 500 }}>
+        <p style={{ fontSize: "13px", color: "#ffff", margin: 0, letterSpacing: "0.04em", textTransform: "uppercase", fontWeight: 500 }}>
           Account settings
         </p>
-        <h2 style={{ fontSize: "22px", fontWeight: 500, margin: "4px 0 0", color: "#111827" }}>
+        <h2 style={{ fontSize: "22px", fontWeight: 500, margin: "4px 0 0", color: "#ffff" }}>
           Update your info
         </h2>
       </div>
@@ -149,7 +149,7 @@ export default function ProfileForm() {
               aria-describedby="email-error"
               style={inputStyle}
             />
-            <p style={{ fontSize: "11px", color: "#9ca3af", margin: "5px 0 0" }}>
+            <p style={{ fontSize: "11px", color: "#ffff", margin: "5px 0 0" }}>
               Changing your email will require re-verification.
             </p>
             {errors.email && <p id="email-error" style={errorStyle}>{errors.email}</p>}
@@ -195,7 +195,7 @@ export default function ProfileForm() {
             <button
               type="button"
               onClick={handleReset}
-              style={{ fontSize: "13px", padding: "8px 16px", border: "0.5px solid #d1d5db", borderRadius: "8px", background: "transparent", cursor: "pointer", color: "#374151" }}
+              style={{ fontSize: "13px", padding: "8px 16px", border: "0.5px solid #d1d5db", borderRadius: "8px", background: "transparent", cursor: "pointer", color: "#ffff" }}
             >
               Reset
             </button>

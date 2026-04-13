@@ -9,20 +9,20 @@ export default function Login() {
   });
 
   const navigate = useNavigate();
-
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleGoogleeLogin = () => {
+  const handleGoogleLogin = () => {
     window.location.href = "https://localhost:3001/api/v1/auth/google";
-    
-  }
+  };
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -48,21 +48,17 @@ export default function Login() {
         return;
       }
 
+      // 🔐 ONLY STORE TOKEN
       localStorage.setItem("token", res.token);
-      localStorage.setItem("role", res.user.role);
-      localStorage.setItem("userId", res.user.id);
-      localStorage.setItem("username", res.user.username);
-      localStorage.setItem("email", res.user.email);
+
       setMessage(res.message || "Login successful");
 
-const userRole = res.user.role?.toLowerCase();
-if (userRole === "admin") {
-  navigate("/admin");
-} else {
-  navigate("/dashboard");
-}
+      // 🚀 Redirect immediately
+      const role = res.user?.role?.toLowerCase();
+
+      navigate(role === "admin" ? "/admin" : "/dashboard");
     } catch (err) {
-      setMessage(err.data?.msg || "Login failed");
+      setMessage(err.data?.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -92,7 +88,8 @@ if (userRole === "admin") {
         <button disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
-        <button type="button" onClick={handleGoogleeLogin} style={{ marginLeft: "1rem" }}>
+
+        <button type="button" onClick={handleGoogleLogin} style={{ marginLeft: "1rem" }}>
           Login with Google
         </button>
       </form>

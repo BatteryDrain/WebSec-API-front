@@ -1,20 +1,23 @@
 import api from "./api";
 
-export const apiFetch = async ({
-    url,
-    method = "GET",
-    data,
-    params,
-    headers = {},
-  }) => {
-    try {
-   
-      const token = localStorage.getItem("token");
+const getToken = () => {
+  return sessionStorage.getItem("token") || localStorage.getItem("token");
+};
 
-      const authHeaders = {
-        ...headers,
-        Authorization: token ? `Bearer ${token}` : "",
-      };
+export const apiFetch = async ({
+  url,
+  method = "GET",
+  data,
+  params,
+  headers = {},
+}) => {
+  try {
+    const token = getToken();
+
+    const authHeaders = {
+      ...headers,
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    };
 
       const response = await api({
         url,

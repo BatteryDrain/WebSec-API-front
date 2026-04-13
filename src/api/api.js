@@ -6,23 +6,16 @@ const api = axios.create({
   timeout: 10000,
 });
 
-// Request Interceptor
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
 
-    // Ensure headers object exists
-    config.headers = config.headers || {};
-
-    // Attach token
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
-    // Handle JSON only if not FormData
     if (!(config.data instanceof FormData)) {
-      config.headers["Content-Type"] =
-        config.headers["Content-Type"] || "application/json";
+      config.headers["Content-Type"] = config.headers["Content-Type"] || "application/json";
     }
 
     return config;
@@ -30,38 +23,31 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-//  Response Interceptor
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     const status = error.response?.status;
-
-    switch (status) {
-      case 400:
-        console.warn("Bad request");
-        break;
-      case 401:
-        console.warn("Unauthorized");
-        localStorage.removeItem("token");
-        break;
-      case 403:
-        console.warn("Forbidden");
-        break;
-      case 404:
-        console.warn("Not found");
-        break;
-      case 500:
-        console.error("Server error");
-        break;
-      default:
-        console.error("Unexpected error");
-    }
-
-    return Promise.reject({
+    const customError = {
       status,
       data: error.response?.data,
-      message: error.message,
-    });
+      message: error.response?.data?.message || error.message,
+    };
+
+    switch (status) {
+      case 401:
+        console.warn("Unauthorized - Logging out");
+        localStorage.removeItem("token");
+       
+        break;
+      case 403:
+        console.warn("Forbidden - Access Denied");
+        break;
+      case 500:
+        console.error("Internal Server Error");
+        break;
+    }
+
+    return Promise.reject(customError);
   }
 );
 

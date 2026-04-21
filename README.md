@@ -52,3 +52,11 @@ api/ - This is where the axios instance is implemented for secure API fetch
 
 ## Ben's reflection 2
  One of the things that was difficult with this phase was the time allowed I recieved section A (auth) a day before this assiognment was due. I had to ask for an extention as I had to finish section B and C, giving us enoughf time to compleate the sections.
+
+## ben's reflection 3
+This sprinrt was the coolest, I got mongo working for a day but ended up using tj's mongo and it worked!! I can finally see the results of my code and it's so cool. I feel like I have so much to lkearn but everything is coming together.
+
+## ben's reflection 4 
+This has been a relaxed portion of the4 assiognment. I started off by installing owsp zap but I couyln't use it as 
+TJ's mongo wasn't running and I was using his because although my mongo works for a few minutes after you create a new cluster it is too unrelyable so last assignmen I switched to usinjg his./ I called him last night and he said he would do the testing and the changes whereas I would be in charge of the etrhical and the leagal writeup. To accomplish this I asked clode to make me a framework with this prompt:
+"can you please help me complete this assignment? I need a framework for the points I should write about for part D" and gave it the assignment for context. I want to be clear clode wrote no conntent for me, just pointed me in the right directiojn. I then helped our other group member in making the diagram and moved my reflection 3 from the backend readme to the front end readme
